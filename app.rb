@@ -15,22 +15,21 @@ class Battle < Sinatra::Base
 	end
 
 	post '/names' do
-		$Player1 = Player.new(params[:player_1_name]) 
-		$Player2 = Player.new(params[:player_2_name])
+		$game = Game.new(params[:player_1_name], params[:player_2_name])
 		redirect '/play'
 	end
 
 	get '/play' do
-		@player_1 = $Player1
-		@player_2 = $Player2
+		@player_1 = $game.player1
+		@player_2 = $game.player2
 		erb :play
 	end
 
 	post '/action' do
-		@player_1 = $Player1 
-		@player_2 = $Player2
+		@player_1 = $game.player1
+		@player_2 = $game.player2
 		@action = params[:attack]
-		Game.new.attack(@player_2) if @action == "Attack"
+		$game.attack(@player_2) if @action == "Attack"
 		erb :action
 	end
 
