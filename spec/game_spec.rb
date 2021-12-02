@@ -15,6 +15,6 @@ describe Game do
   it "Attack a player" do
     game = Game.new(@player1, @player2)
     expect(@player2).to receive(:reduce_health)
-    game.attack(@player2)
+    game.attack(@player1, @player2)
   end
 end

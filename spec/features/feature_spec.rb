@@ -21,4 +21,9 @@ feature "battle game" do
 		click_button :Continue
 		expect(page).to have_content 'Giorgi: 50hp'
 	end
+
+	scenario "Player1 current turn" do
+		sign_in_and_play
+		expect(page).to have_content "Alfonso's turn"
+	end
 end
