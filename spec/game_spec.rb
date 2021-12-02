@@ -17,4 +17,10 @@ describe Game do
     expect(@player2).to receive(:reduce_health)
     game.attack(@player1, @player2)
   end
+
+  it "changes defender after an attack" do
+    game = Game.new(@player1, @player2)
+    game.attack(@player1, @player2)
+    expect(game.defender).to eq @player1
+  end
 end
