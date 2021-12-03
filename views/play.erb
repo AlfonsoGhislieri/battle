@@ -15,8 +15,10 @@
 <h2><%= @current_turn.name %>'s turn</h2>
 
 <form action="/action" method="post">
-  <input type="radio" name="attack" value="Attack">
-  <label for="attack">Attack!</label><br>
+  <select name="attacks" id="attacks">
+    <option value="attack">Attack</option>
+    <option value="paralyse">Paralyse</option>
+  </select>
   <input type="submit" value="Submit">
 </form>
 

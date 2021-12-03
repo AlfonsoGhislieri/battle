@@ -1,5 +1,8 @@
-<% if @action %>
-  <h1><%= @current_turn.name %> <%= @action %></h1>
+<% if @paralysed %>
+  <h1><%= @current_turn.name %> is paralysed </h1>
+
+<% elsif @action %>
+  <h1><%= @current_turn.name %> <%=@action%> </h1>
 <% end %>
 
 <form action="/play" method="get">

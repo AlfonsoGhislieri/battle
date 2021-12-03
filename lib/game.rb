@@ -8,8 +8,23 @@ class Game
   end
 
   def attack(current_player)
-    opponent(current_player).reduce_health
-    switch_turns(current_player)
+    if current_player.paralysed
+      switch_turns(current_player)
+      current_player.un_paralyse
+    else
+      opponent(current_player).reduce_health
+      switch_turns(current_player)
+    end
+  end
+
+  def paralyse(current_player)
+    if current_player.paralysed
+      switch_turns(current_player)
+      current_player.un_paralyse
+    else
+      opponent(current_player).paralyse if rand(1...3) == 1
+      switch_turns(current_player)
+    end
   end
 
   def lost?(current_player)

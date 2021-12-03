@@ -28,9 +28,11 @@ class Battle < Sinatra::Base
 	end
 
 	post '/action' do
-		@action = params[:attack]
+		@action = params[:attacks]
 		@current_turn = $game.current_turn
-		$game.attack(@current_turn) if @action == "Attack"
+		@paralysed = @current_turn.paralysed
+		$game.attack(@current_turn) if @action == "attack"
+		$game.paralyse(@current_turn) if @action == "paralyse"
 		erb :action
 	end
 

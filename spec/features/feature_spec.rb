@@ -42,12 +42,12 @@ feature "battle game" do
 		expect(page).to have_content "Giorgi's turn"
 	end
 
-	scenario "Lose page shows if player health drops to 0" do
-		sign_in_and_play
-		15.times { 
-			attack
-			click_button :Continue }
-		expect(page).to have_content "Lost"
-	end
+	# scenario "Lose page shows if player health drops to 0" do
+	# 	sign_in_and_play
+	# 	15.times { 
+	# 		attack
+	# 		click_button :Continue }
+	# 	expect(page).to have_content "Lost"
+	# end
 
 end
