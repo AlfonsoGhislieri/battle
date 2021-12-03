@@ -5,6 +5,8 @@ describe Game do
     @player1 = double
     @player2 = double
     allow(@player2).to receive(:reduce_health).and_return(nil)
+    allow(@player1).to receive(:paralysed).and_return(false)
+    allow(@player1).to receive(:paralysed).and_return(false)
     @game = Game.new(@player1, @player2)
   end
 
