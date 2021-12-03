@@ -15,6 +15,8 @@ describe Player do
   end
 
   it "Reduces player health" do
-    expect{ @player1.reduce_health }.to change{ @player1.health }.by(-10)
+    random = rand(10)
+    allow(@player1).to receive(:rand).and_return(random)
+    expect{ @player1.reduce_health }.to change{ @player1.health }.by(- random)
   end
 end

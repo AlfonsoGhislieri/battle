@@ -1,5 +1,5 @@
 <% if @action %>
-  <h1><%= @attacker.name %> <%= @action %> <%= @defender.name %></h1>
+  <h1><%= @current_turn.name %> <%= @action %></h1>
 <% end %>
 
 <form action="/play" method="get">

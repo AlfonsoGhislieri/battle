@@ -15,6 +15,6 @@ class Player
   end
 
   def reduce_health
-    @health -= 10
+    @health -= rand(1...10)
   end
 end

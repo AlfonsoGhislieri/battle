@@ -20,16 +20,17 @@ class Battle < Sinatra::Base
 	end
 
 	get '/play' do
-		@player_1 = $game.player1
-		@player_2 = $game.player2
+		@player_1 = $game.players.first
+		@player_2 = $game.players.last
+		@current_turn = $game.current_turn
+		@lost = $game.lost?(@current_turn)
 		erb :play
 	end
 
 	post '/action' do
 		@action = params[:attack]
-		@attacker = $game.attacker
-		@defender = $game.defender
-		$game.attack($game.attacker, $game.defender) if @action == "Attack"
+		@current_turn = $game.current_turn
+		$game.attack(@current_turn) if @action == "Attack"
 		erb :action
 	end
 

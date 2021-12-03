@@ -1,15 +1,23 @@
 <h1><%= @player_1.name %> vs. <%= @player_2.name %></h1>
-<div>
-<%= @player_1.name %>: <%= @player_1.health %>hp
-</div>
-<div>
-<%= @player_2.name %>: <%= @player_2.health %>hp
-</div>
 
-<h2><%= $game.attacker.name %>'s turn</h2>
+<% if @lost %>
+<h1> <%=@current_turn.name %> lost! </h1>
+
+<% else %>
+<div> <h3>
+<%= @player_1.name %>: <%= @player_1.health %>hp
+</h3></div>
+
+<div> <h3>
+<%= @player_2.name %>: <%= @player_2.health %>hp
+</h3></div>
+
+<h2><%= @current_turn.name %>'s turn</h2>
 
 <form action="/action" method="post">
   <input type="radio" name="attack" value="Attack">
   <label for="attack">Attack!</label><br>
   <input type="submit" value="Submit">
 </form>
+
+<% end %>
